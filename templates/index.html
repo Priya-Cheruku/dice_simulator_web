@@ -2,17 +2,73 @@
 <html>
 <head>
     <title>Dice Simulator</title>
+    <style>
+    body {
+        background-color: skyblue;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        padding-top: 50px;
+    }
+
+    .dice {
+        font-size: 100px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .shake {
+        animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(20deg); }
+        50% { transform: rotate(-20deg); }
+        75% { transform: rotate(10deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    button {
+        background-color: #ff7f50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #ff5722;
+    }
+</style>
 </head>
 <body>
     <h1>🎲 Dice Simulator App 🎲</h1>
-    <form method="POST">
-        <label>Number of sides:</label>
-        <input type="number" name="sides" value="6" min="2">
-        <button type="submit">Roll Dice</button>
+    <form action="/" method="post" id="diceForm">
+        Number of sides: <input type="number" name="sides" value="6" min="2" required>
+        <button type="submit"
+    background-color: #ff7f50; /* coral orange */
+    color: white;              /* text color */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s>Roll Dice</button>
     </form>
+    <div id="result" class="dice">{{ result }}</div>
 
-    {% if result %}
-        <h2>You rolled a {{ result }}!</h2>
-    {% endif %}
+    <script>
+        const form = document.getElementById('diceForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function() {
+            result.classList.remove('shake');
+            void result.offsetWidth;
+            result.classList.add('shake');
+        });
+    </script>
 </body>
 </html>
