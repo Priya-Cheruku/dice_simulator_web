@@ -11,8 +11,7 @@
         }
 
         .dice {
-            font-size: 100px;
-            display: inline-block;
+            width: 120px;
             margin-top: 20px;
         }
 
@@ -50,17 +49,29 @@
         Number of sides: <input type="number" name="sides" value="6" min="1" required>
         <button type="submit">Roll Dice</button>
     </form>
-    <div id="result" class="dice">{{ result }}</div>
+
+    {% if result %}
+        <div>
+            <img src="/static/images{{ result }}.jpg" class="dice shake">
+            <img src="/static/image2{{ result }}.png" class="dice shake">
+            <img src="/static/image3{{ result }}.png" class="dice shake">
+            <img src="/static/image4{{ result }}.jpg" class="dice shake">
+            <img src="/static/image5{{ result }}.png" class="dice shake">
+            <img src="/static/image6{{ result }}.jpeg" class="dice shake">
+            <p>Result: {{ result }}</p>
+        </div>
+    {% endif %}
 
     <script>
-        const form = document.getElementById('diceForm');
-        const result = document.getElementById('result');
-
-        form.addEventListener('submit', function() {
-            result.classList.remove('shake');
-            void result.offsetWidth;
-            result.classList.add('shake');
+    const form = document.getElementById('diceForm');
+    form.addEventListener('submit', function() {
+        const diceImages = document.querySelectorAll('.dice');
+        diceImages.forEach(img => {
+            img.classList.remove('shake');
+            void img.offsetWidth;
+            img.classList.add('shake');
         });
-    </script>
+    });
+</script>
 </body>
 </html>
