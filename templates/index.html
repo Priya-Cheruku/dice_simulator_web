@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Simulator</title>
+</head>
+<body>
+    <h1>🎲 Dice Simulator App 🎲</h1>
+    <form method="POST">
+        <label>Number of sides:</label>
+        <input type="number" name="sides" value="6" min="2">
+        <button type="submit">Roll Dice</button>
+    </form>
+
+    {% if result %}
+        <h2>You rolled a {{ result }}!</h2>
+    {% endif %}
+</body>
+</html>
