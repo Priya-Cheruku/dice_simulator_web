@@ -1,4 +1,1 @@
 flask
-git add requirements.txt
-git commit -m "Fixed requirements.txt"
-git push
