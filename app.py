@@ -1,19 +1,17 @@
 from flask import Flask, render_template, request
 import random
+import os
 
 app = Flask(__name__)
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
-    dice_result = None
+    dice_number = None
     if request.method == "POST":
-        sides = int(request.form.get("sides", 6))
-        dice_result = random.randint(1, sides)
-    return render_template("index.html", result=dice_result)
+        dice_number = random.randint(1, 6)
+    return render_template("index.html", dice_number=dice_number)
 
-if __name__ == "__main__":
-    import os
+import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
