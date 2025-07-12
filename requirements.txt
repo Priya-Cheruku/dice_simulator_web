@@ -1,4 +1,1 @@
 flask
-git add templates/index.html
-git commit -m "Enhanced UI with Bootstrap, animation, favicon"
-git push
